@@ -74,3 +74,25 @@ function renderBooks() {
 
   deleteBook();
 }
+
+function readStatus() {
+  const btnStatus = document.querySelectorAll(".btn-status");
+  btnStatus.forEach((button) => {
+    button.textContent === "Read"
+      ? button.classList.add("r")
+      : button.classList.add("nr");
+    button.addEventListener("click", function () {
+      let bookElement = button.closest(".book-card");
+      let index = parseInt(bookElement.dataset.index);
+      button.classList.toggle("r");
+      button.classList.toggle("nr");
+      if (button.classList.contains("r")) {
+        button.textContent = "Read";
+        myLibrary[index].read = "Read";
+      } else {
+        button.textContent = "Not Read";
+        myLibrary[index].read = "Not Read";
+      }
+    });
+  });
+}
