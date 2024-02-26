@@ -96,3 +96,16 @@ function readStatus() {
     });
   });
 }
+
+function deleteBook() {
+  const btnRemove = document.querySelectorAll(".btn-remove");
+  btnRemove.forEach((button) => {
+    button.addEventListener("click", function () {
+      let bookElement = button.closest(".book-card");
+      let index = parseInt(bookElement.dataset.index);
+      myLibrary.splice(index, 1);
+      bookElement.remove();
+      renderBooks();
+    });
+  });
+}
